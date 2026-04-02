@@ -33,32 +33,50 @@
   /* ── HAMBURGER BUTTON ── */
   .menu-btn {
     position: fixed;
-    top: 22px; left: 22px;
+    top: 24px; left: 24px;
     z-index: 300;
-    width: 46px; height: 46px;
-    background: rgba(20,10,10,0.85);
-    border: 1px solid var(--border);
-    border-radius: 6px;
+    width: 64px; height: 64px;
+    background: linear-gradient(145deg, #1e0a0a, #2d0e0e);
+    border: 1px solid rgba(220,60,30,0.5);
+    border-radius: 12px;
     cursor: pointer;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 5px;
-    backdrop-filter: blur(8px);
-    transition: background 0.2s, border-color 0.2s;
+    gap: 7px;
+    backdrop-filter: blur(12px);
+    box-shadow:
+      0 0 0 1px rgba(180,40,20,0.2),
+      0 4px 20px rgba(0,0,0,0.6),
+      0 0 18px rgba(200,50,20,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    transition: all 0.25s ease;
   }
-  .menu-btn:hover { background: rgba(140,30,20,0.4); border-color: var(--hot); }
+  .menu-btn:hover {
+    background: linear-gradient(145deg, #2d0e0e, #3e1010);
+    border-color: var(--hot);
+    box-shadow:
+      0 0 0 1px rgba(231,76,60,0.4),
+      0 4px 24px rgba(0,0,0,0.7),
+      0 0 30px rgba(231,76,60,0.45),
+      inset 0 1px 0 rgba(255,255,255,0.08);
+    transform: scale(1.05);
+  }
   .menu-btn span {
     display: block;
-    width: 22px; height: 2px;
-    background: var(--chrome);
-    border-radius: 2px;
-    transition: transform 0.3s, opacity 0.3s, width 0.3s;
+    height: 2.5px;
+    background: linear-gradient(90deg, var(--hot), var(--chrome));
+    border-radius: 3px;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), opacity 0.3s, width 0.3s;
   }
-  .menu-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .menu-btn span:nth-child(1) { width: 32px; }
+  .menu-btn span:nth-child(2) { width: 24px; }
+  .menu-btn span:nth-child(3) { width: 28px; }
+  .menu-btn:hover span { background: linear-gradient(90deg, #ff6b6b, #fff); }
+  .menu-btn.open span:nth-child(1) { width: 30px; transform: translateY(9.5px) rotate(45deg); }
   .menu-btn.open span:nth-child(2) { opacity: 0; width: 0; }
-  .menu-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .menu-btn.open span:nth-child(3) { width: 30px; transform: translateY(-9.5px) rotate(-45deg); }
 
   /* ── DRAWER ── */
   .drawer {
@@ -195,9 +213,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
-    padding: 60px 30px;
+    padding: 60px 30px 60px;
     background:
       radial-gradient(ellipse at 50% 40%, #3a0a00 0%, #180400 45%, #0d0d0d 80%);
     position: relative;
@@ -264,23 +282,33 @@
 
   .info-badge {
     display: inline-flex;
+    flex-direction: column;
     align-items: center;
-    gap: 9px;
-    background: rgba(39,174,96,0.12);
-    border: 1px solid rgba(39,174,96,0.35);
+    gap: 2px;
+    background: linear-gradient(135deg, rgba(20,80,40,0.4), rgba(10,50,25,0.6));
+    border: 1px solid rgba(46,204,113,0.5);
     color: #2ecc71;
-    border-radius: 4px;
-    padding: 10px 20px;
-    font-size: 13px;
+    border-radius: 8px;
+    padding: 16px 40px;
     font-family: 'Rajdhani', sans-serif;
-    font-weight: 600;
-    letter-spacing: 1.5px;
+    font-weight: 700;
+    letter-spacing: 4px;
     text-transform: uppercase;
     position: relative;
     z-index: 2;
+    margin-top: 24px;
     animation: fadeUp 1s 0.3s ease both;
+    box-shadow:
+      0 0 0 1px rgba(46,204,113,0.2),
+      0 0 24px rgba(46,204,113,0.2),
+      0 4px 20px rgba(0,0,0,0.5),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+    text-shadow: 0 0 20px rgba(46,204,113,0.6);
   }
-  .info-badge::before { content: '✓'; font-size: 14px; }
+  .info-badge::before { content: none; }
+  .info-badge::after  { content: none; }
+  .badge-line1 { font-size: 13px; letter-spacing: 5px; opacity: 0.8; }
+  .badge-line2 { font-size: 22px; letter-spacing: 5px; }
 
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
@@ -391,7 +419,11 @@
   </div>
 
   <p class="slogan">Your food could use<br><span>a little cardio</span></p>
-  <div class="info-badge">100% USDA Organic Ingredients</div>
+  <div class="info-badge">
+    <span class="badge-line1">100% USDA Certified</span>
+    <span class="badge-line2">Organic Ingredients</span>
+  </div>
+
 
   <svg class="ecg-bar" viewBox="0 0 600 24" xmlns="http://www.w3.org/2000/svg">
     <polyline points="0,12 80,12 100,12 110,3 122,21 132,3 142,21 152,12 172,12 600,12"
