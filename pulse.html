@@ -585,6 +585,52 @@
   ::-webkit-scrollbar-track { background: var(--dark); }
   ::-webkit-scrollbar-thumb { background: var(--crimson); border-radius: 3px; }
 
+  /* ── CTA BUTTONS ── */
+  .cta-wrap {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 28px 0 0;
+  }
+  .cta-btn {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 32px;
+    border-radius: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    display: inline-block;
+  }
+  .cta-btn-primary {
+    background: linear-gradient(135deg, #c0392b, #8b1a1a);
+    color: #fff;
+    border: 1px solid rgba(231,76,60,0.5);
+    box-shadow: 0 0 20px rgba(200,50,20,0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .cta-btn-primary:hover {
+    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    box-shadow: 0 0 32px rgba(231,76,60,0.65), inset 0 1px 0 rgba(255,255,255,0.15);
+    transform: translateY(-2px);
+  }
+  .cta-btn-secondary {
+    background: transparent;
+    color: #c8b89a;
+    border: 1px solid rgba(200,184,154,0.4);
+    box-shadow: 0 0 12px rgba(200,184,154,0.1);
+  }
+  .cta-btn-secondary:hover {
+    background: rgba(200,184,154,0.08);
+    border-color: #c8b89a;
+    color: #fff;
+    box-shadow: 0 0 20px rgba(200,184,154,0.25);
+    transform: translateY(-2px);
+  }
+
 
   /* ── GALLERY ── */
   .gallery-wrap {
@@ -689,7 +735,7 @@
     </div>
     <div class="nav-divider"></div>
     <a href="https://www.cardiospice.com" class="nav-link">🏠 Home</a>
-    <a href="https://www.cardiospice.com" class="nav-link">🛒 Where to Buy</a>
+    <a href="https://www.cardiospice.com/purchase.html" class="nav-link">🛒 Where to Buy</a>
     <a href="https://www.cardiospice.com" class="nav-link">🌿 About</a>
     <a href="https://www.cardiospice.com" class="nav-link">📬 Contact</a>
   </nav>
@@ -721,6 +767,11 @@
 
   </div>
 </div>
+
+  <div class="cta-wrap">
+    <button class="cta-btn cta-btn-primary" onclick="toggleMenu()">☰ &nbsp;Products</button>
+    <a href="https://www.cardiospice.com/purchase.html" class="cta-btn cta-btn-secondary">🛒 &nbsp;Where to Buy</a>
+  </div>
 
 <script>
   function toggleMenu(){document.getElementById('menuBtn').classList.toggle('open');document.getElementById('drawer').classList.toggle('open');document.getElementById('overlay').classList.toggle('show');}
